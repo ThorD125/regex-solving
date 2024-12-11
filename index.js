@@ -1,32 +1,29 @@
-// Utility function: Handles special characters
-function handleSpecialChar(replacement, specialChar) {
-    if (specialChar === "+") {
-        return replacement; // Keep as is
-    } else if (specialChar === "?") {
-        return ""; // Remove
-    } else if (specialChar === "*") {
-        return replacement; // Keep as is
-    }
-    return replacement; // Default case
-}
-
 const chars = "abcdefghijklmnopqrstuvwxyz";
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbs = "0123456789";
-// Utility function: Get random character excluding specific ones
+
+function handleSpecialChar(replacement, specialChar) {
+    if (specialChar === "+") {
+        return replacement; 
+    } else if (specialChar === "?") {
+        return ""; 
+    } else if (specialChar === "*") {
+        return replacement; 
+    }
+    return replacement; 
+}
+
 function getRandomCharExcluding(excludedChars) {
     const allChars = `${chars}${CHARS}${numbs}`;
     const allowedChars = allChars.split("").filter(char => !excludedChars.includes(char));
     return allowedChars[Math.floor(Math.random() * allowedChars.length)];
 }
 
-// Utility function: Get random character excluding specific ones
 function getRandomChar() {
     const allChars = `${chars}${CHARS}${numbs}`;
     return allChars[Math.floor(Math.random() * allChars.length)];
 }
 
-// Utility function: Get random character within a range
 function getRandomCharInRange(start, end) {
     const startCode = start.charCodeAt(0);
     const endCode = end.charCodeAt(0);
@@ -34,7 +31,6 @@ function getRandomCharInRange(start, end) {
     return String.fromCharCode(randomCode);
 }
 
-// Main function: Processes the input string
 function processString(input) {
     let result = input;
     console.log(result)
@@ -43,7 +39,6 @@ function processString(input) {
     const splitPattern = /\([^()]*\)([+*?]?)/g;
     const squareBracketPattern = /\[([^\[\]]*)\]([+*?]?)/g;
 
-    // First Pass: Process `()` brackets
     while (true) {
         const matches = [...result.matchAll(splitPattern)];
 
@@ -72,8 +67,7 @@ function processString(input) {
             result = result.replace(fullMatch, replacement);
         });
     }
-
-    // Second Pass: Process `[]` brackets
+    
     while (true) {
         const squareMatches = [...result.matchAll(squareBracketPattern)];
 
