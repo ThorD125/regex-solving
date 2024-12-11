@@ -34,23 +34,23 @@ function getRandomCharInRange(start, end) {
 function processString(input) {
     let result = input;
     
-    let charbank = {};
-    let integ = 0;
+    // let charbank = {};
+    // let integ = 0;
     
-    // console.log(charbank)
-    // console.log(result)
-    let test = result.includes("\\");
-    while(test){
-        charplace = result.indexOf("\\");
-        charbank[integ] = `${result[charplace]}${result[charplace+1]}`
-        // console.log(result)
-        // console.log(`a${result.slice(charplace,charplace+2)}b`)
-        result = result.replace(result.slice(charplace,charplace+2), `charbank${integ}`)
-        // console.log(result)
-        integ += 1
-        test = result.includes("\\");
-    }
-    // console.log(result)
+    // // console.log(charbank)
+    // // console.log(result)
+    // let test = result.includes("\\");
+    // while(test){
+    //     charplace = result.indexOf("\\");
+    //     charbank[integ] = `${result[charplace]}${result[charplace+1]}`
+    //     // console.log(result)
+    //     // console.log(`a${result.slice(charplace,charplace+2)}b`)
+    //     result = result.replace(result.slice(charplace,charplace+2), `charbank${integ}`)
+    //     // console.log(result)
+    //     integ += 1
+    //     test = result.includes("\\");
+    // }
+    // // console.log(result)
     
     result = result.replace(".",getRandomChar())
     // console.log(result)
@@ -119,18 +119,18 @@ function processString(input) {
 
     result = result.replace("*", "")
 
-    // console.log(charbank);
-    for(key in charbank){
-        if (charbank[key] == "\\\\") charbank[key] = "\\"
-        else charbank[key] = charbank[key].replace("\\", "")
-    }
-    // console.log(charbank);
+    // // console.log(charbank);
+    // for(key in charbank){
+    //     if (charbank[key] == "\\\\") charbank[key] = "\\"
+    //     else charbank[key] = charbank[key].replace("\\", "")
+    // }
+    // // console.log(charbank);
     
-    console.log(result);
-    for(key in charbank){
-        result = result.replace(`charbank${key}`, charbank[key])
-    }
-    console.log(result);
+    // console.log(result);
+    // for(key in charbank){
+    //     result = result.replace(`charbank${key}`, charbank[key])
+    // }
+    // console.log(result);
 
     return result;
 }
