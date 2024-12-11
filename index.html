@@ -7,41 +7,55 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            padding: 1rem;
             background-color: #f4f4f9;
         }
-        label, input, div {
-            display: block;
-            margin-bottom: 10px;
+        h3, label, input, div {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
         }
         #output {
             font-size: 1.2em;
+            padding: 1rem;
             color: #333;
             border: 1px solid #ccc;
-            padding: 10px;
-            min-height: 20px;
             background-color: #fff;
             border-radius: 5px;
+        }
+        h3{
+            margin-top: 1rem;
+            padding-top: 0;
         }
     </style>
 </head>
 <body>
-    <h2>Dynamic Input Display</h2>
-    <label for="userInput">Type something:</label>
-    <input type="text" id="userInput" placeholder="Start typing..." />
-    
-    <h3>Your Input:</h3>
-    <div id="output"></div>
+    <div>
+        <h2>Dynamic Input Display</h2>
+        <h3><label for="userInput">Type something:</label></h3>
+        <input type="text" id="userInput" placeholder="Start typing..." />
+        
+        <h3>Your Input:</h3>
+        <div id="output"></div>
+    </div>
+
+    <script src="index.js"></script>
 
     <script>
-        // Get references to the input and output elements
-        const inputField = document.getElementById("userInput");
-        const outputField = document.getElementById("output");
+        document.addEventListener("DOMContentLoaded", function(e){
 
-        // Event listener to update the output dynamically
-        inputField.addEventListener("input", function() {
-            outputField.textContent = inputField.value; // Update text content dynamically
-        });
+            // Get references to the input and output elements
+            const inputField = document.getElementById("userInput");
+            const outputField = document.getElementById("output");
+            
+            // Event listener to update the output dynamically
+            inputField.addEventListener("input", function() {
+                outputField.textContent = processString(inputField.value); // Update text content dynamically
+            });
+
+            inputField.value = "[az]+(b)+[c-f]*(d(eee)?fff)*[g]?(h)";
+            outputField.textContent = processString(inputField.value)
+        })
     </script>
 </body>
 </html>
