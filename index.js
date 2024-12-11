@@ -1,6 +1,3 @@
-// Input string
-let thestring = "[az]+(b)+[c-f]*(d(eee)?fff)*[g]?(h)";
-
 // Utility function: Handles special characters
 function handleSpecialChar(replacement, specialChar) {
     if (specialChar === "+") {
@@ -46,6 +43,19 @@ function processString(input) {
             const specialChar = match[1];
 
             let replacement = group.slice(1, -1);
+
+            console.log(replacement)
+            if (replacement[0] == "?"){
+                if (replacement[1] == ":"){
+                    replacement = replacement.slice(2)
+                }
+                else if (replacement[1] == "="){
+                    replacement = replacement.slice(2)
+                } else if (replacement[1] == "!"){
+                    replacement = ""
+                }
+            }
+
             replacement = handleSpecialChar(replacement, specialChar);
 
             result = result.replace(fullMatch, replacement);
@@ -85,6 +95,3 @@ function processString(input) {
 
     return result;
 }
-
-// Execute and print the result
-console.log(processString(thestring));
