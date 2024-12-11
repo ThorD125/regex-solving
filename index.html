@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Input Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        label, input, div {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #output {
+            font-size: 1.2em;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dynamic Input Display</h2>
+    <label for="userInput">Type something:</label>
+    <input type="text" id="userInput" placeholder="Start typing..." />
+    
+    <h3>Your Input:</h3>
+    <div id="output"></div>
+
+    <script>
+        // Get references to the input and output elements
+        const inputField = document.getElementById("userInput");
+        const outputField = document.getElementById("output");
+
+        // Event listener to update the output dynamically
+        inputField.addEventListener("input", function() {
+            outputField.textContent = inputField.value; // Update text content dynamically
+        });
+    </script>
+</body>
+</html>
