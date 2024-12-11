@@ -10,11 +10,20 @@ function handleSpecialChar(replacement, specialChar) {
     return replacement; // Default case
 }
 
+const chars = "abcdefghijklmnopqrstuvwxyz";
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numbs = "0123456789";
 // Utility function: Get random character excluding specific ones
 function getRandomCharExcluding(excludedChars) {
-    const allChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const allChars = `${chars}${CHARS}${numbs}`;
     const allowedChars = allChars.split("").filter(char => !excludedChars.includes(char));
     return allowedChars[Math.floor(Math.random() * allowedChars.length)];
+}
+
+// Utility function: Get random character excluding specific ones
+function getRandomChar() {
+    const allChars = `${chars}${CHARS}${numbs}`;
+    return allChars[Math.floor(Math.random() * allChars.length)];
 }
 
 // Utility function: Get random character within a range
@@ -28,6 +37,9 @@ function getRandomCharInRange(start, end) {
 // Main function: Processes the input string
 function processString(input) {
     let result = input;
+    console.log(result)
+    result = result.replace(".",getRandomChar())
+    console.log(result)
     const splitPattern = /\([^()]*\)([+*?]?)/g;
     const squareBracketPattern = /\[([^\[\]]*)\]([+*?]?)/g;
 
@@ -92,6 +104,8 @@ function processString(input) {
             result = result.replace(fullMatch, replacement);
         });
     }
+
+    result = result.replace("*", "")
 
     return result;
 }

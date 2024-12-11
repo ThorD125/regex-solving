@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Input Display</title>
+    <title>Dynamic Regex Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,7 +53,8 @@
                 outputField.textContent = processString(inputField.value); // Update text content dynamically
             });
 
-            inputField.value = "[az]+[af-pw](b)+[c-f]*(d(eee)?fff)*[g]?(h)(?:a)x(?!c)d(?=b)";
+            inputField.value = "x*.[az]+[af-pw](b)+[c-f]*(d(eee)?fff)*[g]?(h)(?:a)x(?!c)d(?=b)";
+            inputField.value = "\\ \\w\\d\\s";
             outputField.textContent = processString(inputField.value)
         })
     </script>
