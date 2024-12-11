@@ -44,7 +44,6 @@ function processString(input) {
 
             let replacement = group.slice(1, -1);
 
-            console.log(replacement)
             if (replacement[0] == "?"){
                 if (replacement[1] == ":"){
                     replacement = replacement.slice(2)
@@ -70,23 +69,24 @@ function processString(input) {
 
         squareMatches.forEach(match => {
             const fullMatch = match[0];
-            const content = match[1];
+            let content = match[1];
             const specialChar = match[2];
-
-            let replacement = "";
 
             if (content.includes("^")) {
                 const excludedChars = content.replace("^", "").split("");
-                replacement = getRandomCharExcluding(excludedChars);
+                content = getRandomCharExcluding(excludedChars);
             } else if (content.includes("-")) {
                 const parts = content.split("-");
+                let replacement ="";
                 if (parts.length === 2 && parts[0] && parts[1]) {
                     replacement = getRandomCharInRange(parts[0][parts[0].length - 1], parts[1][0]);
                 }
-            } else {
-                const chars = content.split("");
-                replacement = chars[Math.floor(Math.random() * chars.length)];
+                originpart = `${parts[0][parts[0].length - 1]}-${parts[1][0]}`
+                content = content.replace(originpart, replacement)
             }
+
+            const chars = content.split("");
+            let replacement = chars[Math.floor(Math.random() * chars.length)];
 
             replacement = handleSpecialChar(replacement, specialChar);
             result = result.replace(fullMatch, replacement);
