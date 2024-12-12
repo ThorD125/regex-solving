@@ -135,5 +135,8 @@ function processString(input) {
     return result;
 }
 
-let teststring = "[az]+(b)+[c-f]*(d(eee)?fff)*[g]?(h)";
+let teststring = ""
+teststring = "x*.[az]+[af-pw](b)+[c-f]*(d(eee)?fff)*[g]?(h)(?:a)x(?!c)d(?=b)";
+teststring = "x\\ (\\(\\w\\d)\\s\\W\\D\\S\\\\ sdfds";
+teststring = "[az]+(b)+[c-f]*(d(eee)?fff)*[g]?(h)";
 console.log(processString(teststring));
