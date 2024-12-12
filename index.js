@@ -134,3 +134,6 @@ function processString(input) {
 
     return result;
 }
+
+let teststring = "[az]+(b)+[c-f]*(d(eee)?fff)*[g]?(h)";
+console.log(processString(teststring));
